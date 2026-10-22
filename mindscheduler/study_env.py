@@ -21,13 +21,11 @@ class StudyEnv(gym.Env):
         self.burnout_penalty = burnout_penalty
         self.subject_of = np.repeat(np.arange(self.S), self.T)
 
-        # actions: [0,N) learn topic i | [N,2N) revise | [2N,3N) practice test | 3N rest
         self.rest_action = 3 * self.N
         self.action_space = spaces.Discrete(3 * self.N + 1)
         obs_dim = 3 * self.N + 2 * self.S + 2
         self.observation_space = spaces.Box(0.0, 1.0, shape=(obs_dim,), dtype=np.float32)
 
-    # ---------- helpers ----------
     def encode(self, kind, topic):
         return kind * self.N + topic
 
