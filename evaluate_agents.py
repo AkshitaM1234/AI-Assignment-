@@ -6,8 +6,8 @@ from sb3_contrib import RecurrentPPO
 from mindscheduler.study_env import StudyEnv
 from mindscheduler.baselines import equal_split
 
-SEEDS = [0, 1, 2]
-N_EPISODES = 200
+SEEDS = [0, 1]
+N_EPISODES = 100
 EVAL_SEED0 = 1000          
 
 
@@ -50,12 +50,12 @@ if __name__ == "__main__":
     for noise in [0.05, 0.10, 0.20, 0.30]:
         nenv = StudyEnv(obs_noise=noise)
         row = {"equal_split": float(np.mean(
-            [play(nenv, EVAL_SEED0 + e, baseline=equal_split) for e in range(100)]))}
+            [play(nenv, EVAL_SEED0 + e, baseline=equal_split) for e in range(50)]))}
         for algo in ["ppo", "rppo"]:
             vals = []
             for s in SEEDS:
                 model = load(algo, s)
-                vals += [play(nenv, EVAL_SEED0 + e, model=model) for e in range(100)]
+                vals += [play(nenv, EVAL_SEED0 + e, model=model) for e in range(50)]
             row[algo] = float(np.mean(vals))
         noise_results[str(noise)] = row
         print(noise, row)
