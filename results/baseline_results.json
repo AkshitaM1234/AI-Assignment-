@@ -1,0 +1,27 @@
+{
+  "random": {
+    "mean_marks": 35.59102966646999,
+    "std": 7.043584554624087,
+    "burnouts": 4.41
+  },
+  "equal_split": {
+    "mean_marks": 60.42528307273005,
+    "std": 10.339152498302827,
+    "burnouts": 0.0
+  },
+  "earliest_exam_first": {
+    "mean_marks": 47.7595148979262,
+    "std": 10.01652926860943,
+    "burnouts": 0.0
+  },
+  "spaced_rotation": {
+    "mean_marks": 43.98813435287671,
+    "std": 11.025455399509395,
+    "burnouts": 0.0
+  },
+  "weakest_first_oracle": {
+    "mean_marks": 56.79753472469634,
+    "std": 11.917213426776335,
+    "burnouts": 0.0
+  }
+}

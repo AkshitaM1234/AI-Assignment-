@@ -57,7 +57,7 @@ class StudyEnv(gym.Env):
         super().reset(seed=seed)
         rng = self.np_random
         self.eta = rng.uniform(0.15, 0.35)         
-        self.lam = rng.uniform(0.02, 0.06)         
+        self.lam = rng.uniform(0.03, 0.08)         
         self.difficulty = rng.uniform(0.6, 1.2, size=self.N)
         self.mastery = rng.uniform(0.0, 0.2, size=self.N)  
         self.strength = np.ones(self.N)                     
@@ -134,7 +134,7 @@ class StudyEnv(gym.Env):
                 reward += self.exam_weight * self.marks[k] / 100.0
         active = ~self.exam_done[self.subject_of]         
         self.mastery[active] *= np.exp(-self.lam / self.strength[active])
-        self.fatigue = max(0.0, self.fatigue - 0.5)      
+        self.fatigue = max(0.0, self.fatigue - 0.3)      
         self.since_study += 1
         self.obs_age += 1
         return reward
