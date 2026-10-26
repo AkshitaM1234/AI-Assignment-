@@ -19,7 +19,7 @@ def play(env, seed, model=None, baseline=None):
             action = baseline(env)
         else:
             action, state = model.predict(obs, state=state, episode_start=start,
-                                          deterministic=True)
+                                          deterministic=False)
             action = int(action)
             start = np.array([False])
         obs, _, done, _, info = env.step(action)
